@@ -10,7 +10,7 @@ app.secret_key = "SECRETSECRETSECRET"
 def is_mel(name, email):
     """Is this user Mel?
 
-    >>> is_mel('Mel Melipolski', 'mel@ubermelon.com')
+    >>> is_mel('Mel Melitpolski', 'mel@ubermelon.com')
     True
     >>> is_mel('Judith Butler', 'judith@awesome.com')
     False
@@ -21,7 +21,16 @@ def is_mel(name, email):
 
     """
 
-    return name == "Mel Melitpolski" or email == "mel@ubermelon.com"
+    if name.upper() in ['MEL', 'MEL MELITPOLSKI', 'MELITPOLSKI']:
+        return True
+    if email.upper() == 'MEL@UBERMELON.COM':
+        return True
+    else:
+        return False
+
+
+
+    #return name == "Mel Melitpolski" or email == "mel@ubermelon.com"
 
 
 def most_and_least_common_type(treats):
@@ -142,6 +151,8 @@ def rsvp():
         flash("Sorry, Mel. This is kind of awkward.")
         return redirect("/")
 
+
+    
 
 if __name__ == "__main__":
     app.debug = True
